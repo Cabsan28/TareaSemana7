@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="TareaS7.MainPage">
+    <TabbedPage.Children>
+        <ContentPage Title="Libros">
+            <StackLayout Margin="10,10,10,0">
+                <Label Text="Agregar Libro" FontAttributes="Bold" FontSize="Medium"/>
+                <Label Text="Nombre del libro:"/>
+                <Entry x:Name="txtNombreLibro"/>
+
+                <Label Text="Autor:" />
+                <Entry x:Name="txtAutor" />
+
+                <Label Text="Fecha de impresión:" />
+                <DatePicker x:Name="dpFechaImpresion" />
+
+                <Button Text="Agregar libro" Clicked="AgregarLibro_Clicked" />
+
+
+                <ListView ItemsSource="{Binding Libros}" x:Name="lstLibros">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Nombre}" Detail="{Binding Autor}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+
+        <ContentPage Title="Personas">
+            <StackLayout Margin="10,10,10,0">
+                <Label Text="Agregar Persona" FontAttributes="Bold" FontSize="Medium" Margin="10,10,10,0"/>
+                <StackLayout>
+                    <Label Text="Nombre:" VerticalOptions="Center" />
+                    <Entry x:Name="txtNombrePersona" VerticalOptions="Center" />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Número de cuenta:" VerticalOptions="Center" />
+                    <Entry x:Name="txtNumeroCuenta" VerticalOptions="Center" />
+                </StackLayout>
+
+                <Button Text="Agregar persona" Clicked="AgregarPersona_Clicked" />
+
+                <ListView x:Name="lstPersonas">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Nombre}" Detail="{Binding NumeroCuenta}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+
+        <ContentPage Title="Préstamos">
+            <StackLayout Margin="10,10,10,0">
+                <Label Text="Agregar Préstamo" FontAttributes="Bold" FontSize="Medium"/>
+
+                <Label Text="Persona:" />
+                <Entry x:Name="txtPersona" />
+
+                <Label Text="Libro:" />
+                <Entry x:Name="txtLibro" />
+
+                <Label Text="Fecha de Prestamo:" />
+                <DatePicker x:Name="dpFechaPrestamo" />
+
+                <Label Text="Fecha de Devolución:" />
+                <DatePicker x:Name="dpFechaDevolucion" />
+
+                <Button Text="Agregar Prestamo" Clicked="AgregarPrestamo_Clicked" />
+
+
+                <ListView ItemsSource="{Binding Prestamos}" x:Name="lstPrestamos">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Persona}" Detail="{Binding Libro}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+
+    </TabbedPage.Children>
+</TabbedPage>
